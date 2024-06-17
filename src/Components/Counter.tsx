@@ -2,22 +2,21 @@ import {useState} from "react";
 import Button from "./Button";
 import {Scoreboard} from "./Scoreboard";
 
-type CounterPropsType = {
 
-}
-
-export const Counter = (props: CounterPropsType) => {
+export const Counter = () => {
 
     const [disabledValue, setDisabledValue] = useState(false)
 
-    const [incrementCount, setIncrement] = useState<number>(0)
+    let [incrementCount, setIncrement] = useState<number>(0)
 
     const [maxCountValue, setMaxCountValue] = useState(5)
 
     const incrementHandler = () => {
-        setIncrement(incrementCount => incrementCount + 1)
-        console.log(incrementCount)
-        incrementCount === maxCountValue ? setDisabledValue(true) : setDisabledValue(false)
+
+        if (incrementCount < maxCountValue) {
+            setIncrement(prevState => prevState + 1)
+        }
+        console.log(disabledValue)
     }
 
     const resetCountOfIncrement = () => {
@@ -31,10 +30,10 @@ export const Counter = (props: CounterPropsType) => {
         <div>
             Max value: {maxCountValue}
             <div>
-                <Scoreboard disabledValue={disabledValue} incrementCount={incrementCount}/>
+                <Scoreboard incrementCount={incrementCount} className={incrementCount === maxCountValue ? 'tableDisabled' : 'table'}/>
 
                 <div>
-                    <Button onClickHandler={incrementHandler} disabled={disabledValue} title={'inc'}/>
+                    <Button onClickHandler={incrementHandler} disabled={incrementCount === maxCountValue}  title={'inc'}/>
                     <Button onClickHandler={resetCountOfIncrement} title={'reset'}/>
                 </div>
             </div>

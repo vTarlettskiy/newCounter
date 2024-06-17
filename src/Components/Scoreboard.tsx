@@ -2,13 +2,13 @@ import {useState} from "react";
 
 type ScoreboardPropsType = {
     incrementCount: number
-    disabledValue: boolean
+    className: string
 }
 
-export const Scoreboard = ({incrementCount, disabledValue}: ScoreboardPropsType) => {
+export const Scoreboard = ({incrementCount, className}: ScoreboardPropsType) => {
 
     return (
-        <div className={disabledValue ? 'tableDisabled' : 'table'}>
+        <div className={className}>
             {incrementCount}
         </div>
     );
