@@ -1,15 +1,13 @@
-import {useState} from "react";
+import * as React from 'react';
 
 type ScoreboardPropsType = {
-    incrementCount: number
-    className: string
+    currentIncrementValue: number
 }
 
-export const Scoreboard = ({incrementCount, className}: ScoreboardPropsType) => {
-
+export const Scoreboard = ({currentIncrementValue}: ScoreboardPropsType) => {
     return (
-        <div className={className}>
-            {incrementCount}
+        <div>
+            {currentIncrementValue}
         </div>
-    );
-};
+    )
+}
